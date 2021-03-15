@@ -12,13 +12,9 @@ public class Roulette {
 
     private int id;
     private int[] numbers = new int[36];
-    private String[] colors = {"Rojo", "Negro"};
+    private boolean estado;
 
     public Roulette() {
-    }
-
-    public Roulette(int id) {
-        this.id = id;
     }
 
     public int getId() {
@@ -37,16 +33,18 @@ public class Roulette {
         this.numbers = numbers;
     }
 
-    public String[] getColors() {
-        return colors;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setColors(String[] colors) {
-        this.colors = colors;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
+  
     public int CreateRoulette() {
         id = id+1;
+        this.numbers=numbers;
 
         return id;
     }

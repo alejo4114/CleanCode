@@ -9,6 +9,7 @@
  * @author Alejandro
  */
 public class Bet {
+    private int id_Persona;
     private int number;
     private String color;
     private int amount;
@@ -16,7 +17,8 @@ public class Bet {
     public Bet() {
     }
 
-    public Bet(int number, String color, int amount) {
+    public Bet(int id_Persona, int number, String color, int amount) {
+        this.id_Persona = id_Persona;
         this.number = number;
         this.color = color;
         this.amount = amount;
@@ -45,5 +47,13 @@ public class Bet {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-        
+
+    public int getId_Persona() {
+        return id_Persona;
+    }
+
+    public void setId_Persona(int id_Persona) {
+        this.id_Persona = id_Persona;
+    }
+               
 }
