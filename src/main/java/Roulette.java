@@ -80,8 +80,8 @@ public class Roulette {
 
     public void ListRoulettes() {
         for (int i = 0; i < roulettes.size(); i++) {
-            System.out.println(roulettes.get(i).id);
-            System.out.println(roulettes.get(i).condition);
+            System.out.println("Id Ruleta: " + roulettes.get(i).id);
+            System.out.println("Estado true=Abierta, False= Cerrada: " + roulettes.get(i).condition);
         }
     }
 
@@ -135,7 +135,7 @@ public class Roulette {
 
         return roulettes.get(id - 1).number;
     }
-    
+
     public void ValidateWin(int id, int number) {
         for (int i = 0; i < roulettes.get(id - 1).bets.size(); i++) {
             if (roulettes.get(id - 1).bets.get(i).getNumber() == number) {
@@ -147,18 +147,18 @@ public class Roulette {
                 System.out.println("la persona: " + roulettes.get(id - 1).bets.get(i).getId_Persona() + " ha ganado");
                 System.out.println("Gano por color Rojo: " + roulettes.get(id - 1).bets.get(i).getAmount() * 1.8);
                 System.out.println("numero Apuesta: " + roulettes.get(id - 1).bets.get(i).getNumber());
-                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor()+" Rojo");
+                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor() + " Rojo");
             } else {
                 System.out.println("la persona: " + roulettes.get(id - 1).bets.get(i).getId_Persona() + " ha ganado");
                 System.out.println("Gano por color Negro: " + roulettes.get(id - 1).bets.get(i).getAmount() * 1.8);
                 System.out.println("numero Apuesta: " + roulettes.get(id - 1).bets.get(i).getNumber());
-                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor()+" Negro");
+                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor() + " Negro");
             }
         }
     }
-    
-    public void CloseRoulette(int id){
-        roulettes.get(id-1).bets.clear();
-        roulettes.get(id-1).condition=false;    
+
+    public void CloseRoulette(int id) {
+        roulettes.get(id - 1).bets.clear();
+        roulettes.get(id - 1).condition = false;
     }
 }

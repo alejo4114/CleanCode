@@ -24,7 +24,7 @@ public class Casino {
             int sel = sc.nextInt();
             switch (sel) {
                 case 1:
-                    System.out.println(rou.CreateRoulette());
+                    System.out.println("Id de Ruleta: "+rou.CreateRoulette());
                     break;
 
                 case 2:
