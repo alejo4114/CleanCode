@@ -20,7 +20,7 @@ public class Casino {
         Scanner sc = new Scanner(System.in);
         boolean close = false;
         do {
-            System.out.println("1. crear ruleta, 2. abrir ruleta, 3. listar ruletas, 4. apostar, 5. Salir");
+            System.out.println("1. Crear Ruleta, 2. Abrir Ruleta, 3. Listar Ruletas, 4. Apostar, 5. Cerrar Ruleta, 6. Salir");
             int sel = sc.nextInt();
             switch (sel) {
                 case 1:
@@ -62,10 +62,15 @@ public class Casino {
                     break;
 
                 case 5:
-                    rou.SpinRoulette(1);
-                    
-//                    close = true;
-//                    break;
+                    System.out.println("ingrese la ruleta que se cerrara");
+                    int cr = sc.nextInt();
+                    int win = rou.SpinRoulette(cr);
+                    rou.ValidateWin(cr, win);
+                    rou.CloseRoulette(cr);
+                    break;
+                case 6:
+                    close = true;
+                    break;
             }
         } while (close != true);
         // TODO code application logic here

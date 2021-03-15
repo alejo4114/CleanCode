@@ -110,30 +110,55 @@ public class Roulette {
             }
         }
     }
-    
-    public void ListBets(int id){
+
+    public void ListBets(int id) {
         for (int i = 0; i < roulettes.size(); i++) {
             if (roulettes.get(i).id == id) {
                 for (int j = 0; j < roulettes.get(i).bets.size(); j++) {
-                    System.out.println("persona Apuesta: "+roulettes.get(i).bets.get(j).getId_Persona());
-                    System.out.println("monto Apuesta: "+roulettes.get(i).bets.get(j).getAmount());
-                    System.out.println("numero Apuesta: "+roulettes.get(i).bets.get(j).getNumber());
-                    System.out.println("color Apuesta: "+roulettes.get(i).bets.get(j).getColor());
+                    System.out.println("persona Apuesta: " + roulettes.get(i).bets.get(j).getId_Persona());
+                    System.out.println("monto Apuesta: " + roulettes.get(i).bets.get(j).getAmount());
+                    System.out.println("numero Apuesta: " + roulettes.get(i).bets.get(j).getNumber());
+                    System.out.println("color Apuesta: " + roulettes.get(i).bets.get(j).getColor());
                 }
             }
-        }   
+        }
+    }
+
+    public int SpinRoulette(int id) {
+        Random random = new Random();
+        roulettes.get(id - 1).number = random.nextInt(36);
+        if (roulettes.get(id - 1).number % 2 == 0) {
+            roulettes.get(id - 1).color = 1;
+        } else {
+            roulettes.get(id - 1).color = 0;
+        }
+
+        return roulettes.get(id - 1).number;
     }
     
-    public void SpinRoulette(int id){
-        Random random = new Random();
-        roulettes.get(id-1).number= random.nextInt(36);
-        if (roulettes.get(id-1).number%2==0) {
-            roulettes.get(id-1).color=1;            
-        }else{
-            roulettes.get(id-1).color=0;        
-        }        
-        System.out.println("id ruleta"+roulettes.get(id-1));
-        System.out.println("numero ganador ruleta"+roulettes.get(id-1).number);
-        System.out.println("color ganador ruleta"+roulettes.get(id-1).color);
+    public void ValidateWin(int id, int number) {
+        for (int i = 0; i < roulettes.get(id - 1).bets.size(); i++) {
+            if (roulettes.get(id - 1).bets.get(i).getNumber() == number) {
+                System.out.println("la persona: " + roulettes.get(id - 1).bets.get(i).getId_Persona() + " ha ganado");
+                System.out.println("Gano por numero: " + roulettes.get(id - 1).bets.get(i).getAmount() * 5);
+                System.out.println("numero Apuesta: " + roulettes.get(id - 1).bets.get(i).getNumber());
+                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor());
+            } else if (roulettes.get(id - 1).bets.get(i).getColor() == 1) {
+                System.out.println("la persona: " + roulettes.get(id - 1).bets.get(i).getId_Persona() + " ha ganado");
+                System.out.println("Gano por color Rojo: " + roulettes.get(id - 1).bets.get(i).getAmount() * 1.8);
+                System.out.println("numero Apuesta: " + roulettes.get(id - 1).bets.get(i).getNumber());
+                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor()+" Rojo");
+            } else {
+                System.out.println("la persona: " + roulettes.get(id - 1).bets.get(i).getId_Persona() + " ha ganado");
+                System.out.println("Gano por color Negro: " + roulettes.get(id - 1).bets.get(i).getAmount() * 1.8);
+                System.out.println("numero Apuesta: " + roulettes.get(id - 1).bets.get(i).getNumber());
+                System.out.println("color Apuesta: " + roulettes.get(id - 1).bets.get(i).getColor()+" Negro");
+            }
+        }
+    }
+    
+    public void CloseRoulette(int id){
+        roulettes.get(id-1).bets.clear();
+        roulettes.get(id-1).condition=false;    
     }
 }
