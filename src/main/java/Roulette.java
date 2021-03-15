@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -120,8 +121,19 @@ public class Roulette {
                     System.out.println("color Apuesta: "+roulettes.get(i).bets.get(j).getColor());
                 }
             }
-        }
+        }   
+    }
     
-    
+    public void SpinRoulette(int id){
+        Random random = new Random();
+        roulettes.get(id-1).number= random.nextInt(36);
+        if (roulettes.get(id-1).number%2==0) {
+            roulettes.get(id-1).color=1;            
+        }else{
+            roulettes.get(id-1).color=0;        
+        }        
+        System.out.println("id ruleta"+roulettes.get(id-1));
+        System.out.println("numero ganador ruleta"+roulettes.get(id-1).number);
+        System.out.println("color ganador ruleta"+roulettes.get(id-1).color);
     }
 }

@@ -49,7 +49,7 @@ public class Casino {
                         int b = sc.nextInt();
                         int q = rou.ValidateBet(b);
                         if (q == 1) {
-                            System.out.println("desea apostar al color 1. Negro, 2. Rojo");
+                            System.out.println("desea apostar al color 0. Negro, 1. Rojo");
                             int c = sc.nextInt();
                             System.out.println("ingrese el monto a apostar");
                             m = sc.nextInt();
@@ -62,8 +62,10 @@ public class Casino {
                     break;
 
                 case 5:
-                    close = true;
-                    break;
+                    rou.SpinRoulette(1);
+                    
+//                    close = true;
+//                    break;
             }
         } while (close != true);
         // TODO code application logic here
