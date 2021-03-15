@@ -63,6 +63,7 @@ public class Casino {
 
                 case 5:
                     close = true;
+                    break;
             }
         } while (close != true);
         // TODO code application logic here

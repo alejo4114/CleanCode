@@ -109,4 +109,19 @@ public class Roulette {
             }
         }
     }
+    
+    public void ListBets(int id){
+        for (int i = 0; i < roulettes.size(); i++) {
+            if (roulettes.get(i).id == id) {
+                for (int j = 0; j < roulettes.get(i).bets.size(); j++) {
+                    System.out.println("persona Apuesta: "+roulettes.get(i).bets.get(j).getId_Persona());
+                    System.out.println("monto Apuesta: "+roulettes.get(i).bets.get(j).getAmount());
+                    System.out.println("numero Apuesta: "+roulettes.get(i).bets.get(j).getNumber());
+                    System.out.println("color Apuesta: "+roulettes.get(i).bets.get(j).getColor());
+                }
+            }
+        }
+    
+    
+    }
 }
