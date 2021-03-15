@@ -11,13 +11,13 @@
 public class Bet {
     private int id_Persona;
     private int number;
-    private String color;
+    private int color;
     private int amount;
 
     public Bet() {
     }
 
-    public Bet(int id_Persona, int number, String color, int amount) {
+    public Bet(int id_Persona, int number, int color, int amount) {
         this.id_Persona = id_Persona;
         this.number = number;
         this.color = color;
@@ -32,11 +32,11 @@ public class Bet {
         this.number = number;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 

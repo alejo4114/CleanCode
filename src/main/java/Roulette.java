@@ -13,9 +13,11 @@ import java.util.ArrayList;
 public class Roulette {
 
     private int id;
-    private int[] numbers = new int[36];
+    private int number;
+    private int color;
     private boolean condition;
     ArrayList<Roulette> roulettes = new ArrayList();
+    ArrayList<Bet> bets = new ArrayList();
 
     public Roulette() {
     }
@@ -32,12 +34,20 @@ public class Roulette {
         this.id = id;
     }
 
-    public int[] getNumbers() {
-        return numbers;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNumbers(int[] numbers) {
-        this.numbers = numbers;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public boolean isCondition() {
@@ -59,8 +69,9 @@ public class Roulette {
     public String OpenRoulette(int id) {
         for (int i = 0; i < roulettes.size(); i++) {
             if (roulettes.get(i).id == id && roulettes.get(i).condition == false) {
-                roulettes.get(i).condition=true;
-                System.out.println("Operacion Exitosa, mesa abierta");
+                roulettes.get(i).condition = true;
+                System.out.println("Operacion Exitosa, ruleta abierta");
+                break;
             }
         }
         return null;
@@ -70,6 +81,32 @@ public class Roulette {
         for (int i = 0; i < roulettes.size(); i++) {
             System.out.println(roulettes.get(i).id);
             System.out.println(roulettes.get(i).condition);
+        }
+    }
+
+    public int ValidateRoulette(int id) {
+        int val = 0;
+        for (int i = 0; i < roulettes.size(); i++) {
+            if (roulettes.get(i).id == id && roulettes.get(i).condition == true) {
+                val = 1;
+            }
+        }
+        return val;
+    }
+
+    public int ValidateBet(int number) {
+        int val = 0;
+        if (number >= 0 && number <= 36) {
+            val = 1;
+        }
+        return val;
+    }
+
+    public void Bets(int id, Bet b) {
+        for (int i = 0; i < roulettes.size(); i++) {
+            if (roulettes.get(i).id == id && roulettes.get(i).condition == true) {
+                roulettes.get(i).bets.add(b);
+            }
         }
     }
 }
